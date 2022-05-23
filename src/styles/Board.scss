@@ -1,0 +1,12 @@
+.board {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.board > .grid-container {
+  background-color: aqua;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 0.2fr));
+  grid-gap: 20px;
+  justify-content: center;
+}

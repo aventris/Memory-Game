@@ -12,8 +12,9 @@ $card-gradient: radial-gradient(
 $transition-show-card: transform 2s ease;
 $transition-hide-card: transform 500ms ease;
 .card {
-  width: 200px;
-  height: 300px;
+  width: 100%;
+  //width: 200px;
+  //height: 300px;
   position: relative;
   border-radius: 20px;
 }
