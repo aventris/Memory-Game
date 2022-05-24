@@ -23,6 +23,7 @@ module.exports = {
     alias: {
       "@components": path.resolve(__dirname, "src/components"),
       "@styles": path.resolve(__dirname, "src/styles"),
+      "@images": path.resolve(__dirname, "src/assets/images"),
     },
   },
   module: {
@@ -35,6 +36,10 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
       },
     ],
   },
