@@ -1,6 +1,13 @@
+@import "variables";
+
 .level-selector {
   width: 100%;
   height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .level-container {
   display: flex;
@@ -8,8 +15,20 @@
   justify-content: center;
   align-items: center;
   button {
-    margin: 20px 0;
     height: 50px;
     width: 200px;
+    margin: 20px 0;
+    background: none;
+    border: 1px solid $green-color;
+    color: $green-color;
+    font-family: "customFont";
+    font-size: 18px;
+    cursor: pointer;
+    opacity: 0.8;
+    &:hover {
+      opacity: 1;
+      box-shadow: 0 0 10px 0 $green-color;
+      text-shadow: 0 0 5px $green-color;
+    }
   }
 }

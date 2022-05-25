@@ -1,7 +1,9 @@
+@import "variables";
+
 $border-gradient: radial-gradient(
   200px circle at var(--mouse-x) var(--mouse-y),
-  rgba(#000000, 0.2),
-  rgba(#000000, 1)
+  rgba($green-color, 0.2),
+  rgba($green-color, 1)
 );
 $card-gradient: radial-gradient(
   200px circle at var(--mouse-x) var(--mouse-y),
@@ -12,6 +14,9 @@ $card-gradient: radial-gradient(
 $transition-show-card: transform 2s ease;
 $transition-hide-card: transform 500ms ease;
 .card {
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+
   width: 100%;
   position: relative;
   border-radius: 20px;
@@ -30,11 +35,12 @@ $transition-hide-card: transform 500ms ease;
     border-radius: inherit;
   }
   > span {
-    color: #97ce4c;
+    color: $green-color;
     margin: 0 auto;
   }
 }
 div.card-content {
+  background: #121212;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -75,7 +81,6 @@ div.card-content {
 
 .front {
   font-family: "customFont";
-  background: #121212;
   transition: $transition-show-card;
   &.hidden {
     transition: $transition-hide-card;

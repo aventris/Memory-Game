@@ -14,9 +14,16 @@ const Card = ({ onFlip, card, image, title, flipped }) => {
     target.style.setProperty("--mouse-x", `${x}px`);
     target.style.setProperty("--mouse-y", `${y}px`);
   };
+
+  const resetPosition = (e) => {
+    const target = e.currentTarget;
+    target.style.setProperty("--mouse-x", "50%");
+    target.style.setProperty("--mouse-y", "50%");
+  };
   return (
     <div
       onMouseMove={handleOnMouseMove}
+      onMouseLeave={resetPosition}
       className="card"
       onClick={flipped ? null : () => onFlip(card)}
     >

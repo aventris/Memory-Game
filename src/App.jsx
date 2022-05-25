@@ -3,8 +3,10 @@ import Card from "@components/Card";
 import Board from "@components/Board";
 import LevelSelector from "@components/LevelSelector";
 import WinModal from "@components/WinModal";
+import BackgroundAnimation from "@components/BackgroundAnimation";
 
 import "@styles/App.scss";
+import logo from "@images/logo.svg";
 
 let tempData = undefined;
 let tempControl = undefined;
@@ -50,10 +52,16 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div className="app">
+      <div className="title">
+        <img src={logo} alt="" />
+        <div>
+          <button>Home</button>
+          <h2>Memory game</h2>
+          <button>Reset</button>
+        </div>
+      </div>
       <React.Fragment>
-        <h1>Hello world</h1>
-
         {level === 0 || loading ? (
           <LevelSelector onLevelSelection={handleLevel} />
         ) : (
@@ -64,6 +72,7 @@ const App = () => {
           />
         )}
       </React.Fragment>
+      <BackgroundAnimation />
     </div>
   );
 };
