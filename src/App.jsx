@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import Card from "@components/Card";
 import Board from "@components/Board";
 import LevelSelector from "@components/LevelSelector";
+import WinModal from "@components/WinModal";
 
 import "@styles/App.scss";
 
 let tempData = undefined;
 let tempControl = undefined;
+const CARDS_PER_LEVEL = 5;
 
 const App = () => {
   const [loading, setLoading] = useState(true);
@@ -17,9 +19,8 @@ const App = () => {
     fetch("https://rickandmortyapi.com/api/character")
       .then((response) => response.json())
       .then((data) => {
-        console.log(level);
         let characters = data.results;
-        characters.slice(0, 5 * level).map((character) => {
+        characters.slice(0, CARDS_PER_LEVEL * level).map((character) => {
           dataArray.push([`${character.id}a`, character.name, character.image]);
           dataArray.push([`${character.id}b`, character.name, character.image]);
         });
@@ -28,16 +29,16 @@ const App = () => {
         dataArray.forEach((el) => {
           aux[el[0]] = false;
         });
+
+        /* tempData.sort(() => Math.random() - 0.5); */
         tempControl = aux;
         tempData = dataArray;
-        tempData.sort(() => Math.random() - 0.5);
         setLoading(false);
       })
       .catch((error) => console.log(error));
   };
 
   useEffect(() => {
-    console.log("Use Effect");
     if (level !== 0) {
       fetchData();
     }
@@ -48,8 +49,6 @@ const App = () => {
     setLevel(level);
   };
 
-  console.log("Render ", level === 0, loading, level === 0 || loading);
-
   return (
     <div>
       <React.Fragment>
@@ -58,11 +57,13 @@ const App = () => {
         {level === 0 || loading ? (
           <LevelSelector onLevelSelection={handleLevel} />
         ) : (
-          <Board data={tempData} control={tempControl} />
+          <Board
+            data={tempData}
+            control={tempControl}
+            level={level * CARDS_PER_LEVEL}
+          />
         )}
       </React.Fragment>
-
-      {/* <LevelSelector /> */}
     </div>
   );
 };

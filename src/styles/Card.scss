@@ -74,6 +74,7 @@ div.card-content {
 }
 
 .front {
+  font-family: "customFont";
   background: #121212;
   transition: $transition-show-card;
   &.hidden {
