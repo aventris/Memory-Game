@@ -8,6 +8,7 @@ const LevelSelector = ({ onLevelSelection }) => {
   };
   return (
     <div className="level-selector">
+      <span>Select level to start game</span>
       <div className="level-container">
         <button onClick={() => handleClick(1)}>Easy</button>
         <button onClick={() => handleClick(2)}>Mid</button>

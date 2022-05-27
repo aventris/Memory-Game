@@ -5,7 +5,7 @@ reactDOM.createPortal(WinModal, document.getElementById("modal"));
 
 import "@styles/WinModal.scss";
 
-const WinModal = ({ time }) => {
+const WinModal = ({ time, onReset }) => {
   const msToTime = (time) => {
     let ms = time % 1000;
     let sec = Math.floor(time / 1000) % 60;
@@ -16,13 +16,16 @@ const WinModal = ({ time }) => {
     } ${ms > 0 ? ms + "ms" : ""}`;
   };
 
+  const handleReload = () => {
+    window.location.reload(true);
+  };
   return (
     <div className="modal">
       <div className="win-condition">
         <h1>Good job!</h1>
         <span>Elapsed time: {msToTime(time)}</span>
-        <button>Back Home</button>
-        <button>Play again</button>
+        <button onClick={handleReload}>Back Home</button>
+        <button onClick={onReset}>Play again</button>
       </div>
     </div>
   );

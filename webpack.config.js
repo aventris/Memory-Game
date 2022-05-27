@@ -25,6 +25,7 @@ module.exports = {
       "@styles": path.resolve(__dirname, "src/styles"),
       "@images": path.resolve(__dirname, "src/assets/images"),
       "@fonts": path.resolve(__dirname, "src/fonts"),
+      "@hooks": path.resolve(__dirname, "src/hooks"),
     },
   },
   module: {
