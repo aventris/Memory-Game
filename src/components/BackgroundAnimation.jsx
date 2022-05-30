@@ -55,12 +55,7 @@ const BackgroundAnimation = () => {
     }
   }, []);
 
-  return (
-    <div ref={boxRef} className="animation-container">
-      {/* <h1>Titulo mamalon</h1> */}
-      {/* <div className="unit"></div> */}
-    </div>
-  );
+  return <div ref={boxRef} className="animation-container"></div>;
 };
 
 export default BackgroundAnimation;

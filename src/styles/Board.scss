@@ -5,9 +5,15 @@
 }
 
 .board > .grid-container {
-  //background-color: aqua;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 0.2fr));
+  grid-template-columns: repeat(5, minmax(50px, 150px));
   grid-gap: 20px;
   justify-content: center;
+}
+
+@media (max-width: 600px) {
+  .board > .grid-container {
+    grid-template-columns: repeat(4, minmax(50px, 1fr));
+    grid-gap: 5px;
+  }
 }

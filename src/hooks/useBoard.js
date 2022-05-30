@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import useFetchData from "@hooks/useFetchData";
 
-const useBoard = (level) => {
-  const { loading, boardData } = useFetchData(level);
+const useBoard = () => {
+  const { loading, level, boardData, handleLevel } = useFetchData(level);
   const [disableBoard, setDisableBoard] = useState(false);
   const [finished, setFinished] = useState(false);
   const [memoControl, setMemoControl] = useState({});
@@ -53,7 +53,7 @@ const useBoard = (level) => {
   }, []);
 
   useEffect(() => {
-    if (matchedPairs.current === level && finished === false) {
+    if (matchedPairs.current === level && level != 0 && finished === false) {
       elapsedTimeRef.current = new Date() - elapsedTimeRef.current;
       setTimeout(() => {
         setFinished(true);
@@ -73,6 +73,7 @@ const useBoard = (level) => {
   const elapsedTime = elapsedTimeRef.current;
   return {
     loading,
+    level,
     memoControl,
     boardData,
     finished,
@@ -80,6 +81,7 @@ const useBoard = (level) => {
     elapsedTime,
     handleCardFlip,
     handleReset,
+    handleLevel,
   };
 };
 

@@ -19,7 +19,7 @@ $transition-hide-card: transform 500ms ease;
 
   width: 100%;
   position: relative;
-  border-radius: 20px;
+  border-radius: 10px;
   aspect-ratio: 2 / 3;
 }
 
@@ -35,6 +35,7 @@ $transition-hide-card: transform 500ms ease;
     border-radius: inherit;
   }
   > span {
+    font-size: 100%;
     color: $green-color;
     margin: 0 auto;
   }
@@ -98,4 +99,18 @@ div.card-content {
 
 .hidden {
   transform: rotateY(180deg);
+}
+
+@media (max-width: 600px) {
+  .card {
+    border-radius: 5px;
+    .card-content {
+      span {
+        display: none;
+      }
+    }
+    div.card-content {
+      padding: 2px;
+    }
+  }
 }

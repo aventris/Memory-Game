@@ -8,6 +8,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  span {
+    font-family: "customFont";
+    color: $blue-color;
+  }
 }
 .level-container {
   display: flex;

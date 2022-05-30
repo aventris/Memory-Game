@@ -1,11 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 
-const useFetchData = (level) => {
+const CARDS_PER_LEVEL = 5;
+const useFetchData = () => {
   const [loading, setLoading] = useState(true);
+  const [level, setLevel] = useState(0);
   const boardDataRef = useRef([]);
 
   const fetchData = () => {
-    fetch("https://rickandmortyapi.com/api/character")
+    let page = Math.random() * 42 + 1;
+    fetch(`https://rickandmortyapi.com/api/character?page=${page}`)
       .then((response) => response.json())
       .then((data) => {
         let cardArray = [];
@@ -14,23 +17,26 @@ const useFetchData = (level) => {
           cardArray.push([`${character.id}a`, character.name, character.image]);
           cardArray.push([`${character.id}b`, character.name, character.image]);
         });
-        boardDataRef.current = [
-          ...cardArray,
-        ]; /* .sort(() => Math.random() - 0.5); */
+        cardArray.sort(() => Math.random() - 0.5);
+        boardDataRef.current = [...cardArray];
         setLoading(false);
       })
       .catch((error) => console.log(error));
   };
 
+  const handleLevel = (level) => {
+    setLevel(level * CARDS_PER_LEVEL);
+  };
   useEffect(() => {
-    fetchData();
-  }, []);
+    if (level) fetchData();
+  }, [level]);
 
   const boardData = boardDataRef.current;
-
   return {
     loading,
+    level,
     boardData,
+    handleLevel,
   };
 };
 

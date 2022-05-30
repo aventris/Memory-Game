@@ -3,14 +3,18 @@ import React from "react";
 import logo from "@images/logo.svg";
 import "@styles/Title.scss";
 
-const Title = ({ home = false }) => {
+const Title = ({ onReset, home }) => {
+  const handleReload = () => {
+    window.location.reload(true);
+  };
+
   return (
     <div className="title">
       <img src={logo} alt="" />
       <div>
-        {!home && <button>Home</button>}
+        {!home && <button onClick={handleReload}>Home</button>}
         <h2>Memory game</h2>
-        {!home && <button>Reset</button>}
+        {!home && <button onClick={onReset}>Reset</button>}
       </div>
     </div>
   );
