@@ -57,7 +57,7 @@ const useBoard = () => {
       elapsedTimeRef.current = new Date() - elapsedTimeRef.current;
       setTimeout(() => {
         setFinished(true);
-      }, 1000);
+      }, 2000);
     }
   });
   const handleReset = () => {
